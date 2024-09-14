@@ -68,7 +68,8 @@ We will then take care of the issue as soon as possible.
 
   2.  **Install the required packages:**
       ```
-      make install-backend
+      pip install -r requirements.txt
+      
       ```
 
   3.  **Configure the Django settings:**
@@ -101,7 +102,7 @@ We will then take care of the issue as soon as possible.
 
   5. **Start the Django development server**
       ```
-      make runserver
+      python manage.py runserver
       ```
 
 #### Before Submitting a Bug Report
