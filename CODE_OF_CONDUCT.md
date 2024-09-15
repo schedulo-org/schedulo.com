@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-A primary goal of **DjangoIndia Community** is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a **friendly, safe, and welcoming environment for all**, regardless of:
+A primary goal of **Schedulo** is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a **friendly, safe, and welcoming environment for all**, regardless of:
 
 - Gender
 - Sexual orientation
@@ -13,7 +13,7 @@ A primary goal of **DjangoIndia Community** is to be inclusive to the largest nu
 
 This Code of Conduct outlines our **expectations** for all participants in our community, as well as the **consequences for unacceptable behavior**.
 
-We invite everyone who participates in the DjangoIndia Community to help us create **safe and positive experiences** for everyone.
+We invite everyone who participates in the Schedulo to help us create **safe and positive experiences** for everyone.
 
 ---
 
