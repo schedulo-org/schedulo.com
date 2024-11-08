@@ -9,12 +9,17 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+from django.core.management.utils import get_random_secret_key
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DOCKERIZED = int(os.environ.get("DOCKERIZED", 0)) == 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -23,10 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%)o-ipipytu1(oxit9y^j_xfbye$75)a+)7brb0q+g$480ig0h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
-
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
 # Application definition
 
@@ -40,6 +47,7 @@ INSTALLED_APPS = [
     'schedulo.db',
     'schedulo.api',
     'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'schedulo.urls'
@@ -124,3 +133,24 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/4.2/topics/i18n/
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "Asia/Kolkata"
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
